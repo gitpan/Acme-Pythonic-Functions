@@ -1,0 +1,74 @@
+NAME
+
+Acme::Pythonic::Functions - Python-like functions for Perl
+
+This Perl-module offers some basic string-, list- and other functions, that try to mimic those of the programming-language "Python".
+
+INSTALLATION
+
+To install this module, run the following commands:
+
+	perl Makefile.PL
+	make
+
+and as "root":
+
+	make install
+
+USAGE
+
+Python-like functions, that can be found here, are:
+
+    Strings:
+
+        endswith()
+        isdigit()
+        isin()
+        len()
+        lstrip()
+        replace()
+        rstrip()
+        startswith()
+        strip()
+
+    Lists:
+
+        append()
+        extend()
+        insert()
+        isin()
+        len()
+        remove()
+
+    Hashes:
+
+        has_key()
+        isin()
+        len()
+
+    Files:
+
+        isdir()
+        isfile()
+
+    System:
+        osname()
+
+Please see the scripts in the "examples"-directory in the tar-ball about how to use them.
+
+There are a few additional (hopefully useful) functions that don't have a model in Python.
+
+SUPPORT AND DOCUMENTATION
+
+After installing, you can find documentation for this module with the
+perldoc command.
+
+    perldoc Acme::Pythonic::Functions
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2009 Hauke Lubenow
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
