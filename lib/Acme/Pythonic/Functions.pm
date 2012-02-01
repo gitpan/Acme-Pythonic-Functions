@@ -11,10 +11,9 @@ use Exporter;
 our ($VERSION, @ISA, @EXPORT);
 @ISA         = qw(Exporter);
 
-$VERSION     = 0.20;
+$VERSION     = 0.30;
 
-@EXPORT      = qw(append endswith extend has_key insert isdigit isin isdir isfile len lstrip lstrip2 osname readfile remove replace rstrip rstrip2 startswith strip writefile);
-
+@EXPORT      = qw(append endswith extend has_key insert isdigit isin isdir isfile len lstrip lstrip2 osname pront readfile remove replace rstrip rstrip2 startswith strip writefile);
 
 # Internal Functions
 
@@ -37,6 +36,17 @@ sub checkArgs {
         }
 
         croak "Error: Function '$name' takes exactly $nr $arg ($lenvals given),";
+    }
+}
+
+# print-Replacement-Function
+
+sub pront {
+    if ($#_ == -1) {
+        @_ = ("");
+    }
+    for (@_) {
+        print"$_\n"
     }
 }
 
@@ -289,7 +299,7 @@ sub has_key {
 }
 
 
-# Functions for several datatypes:
+# Functions for several datatypes
 
 sub isin {
 
@@ -445,7 +455,6 @@ sub osname {
     return $^O;
 }
 
-
 1;
 
 __END__
@@ -457,7 +466,7 @@ Acme::Pythonic::Functions - Python-like functions for Perl
 
 =head1 VERSION
 
-Version 0.20
+Version 0.30
 
 =head1 SYNOPSIS
 
@@ -465,105 +474,99 @@ The following script "example.pl" shows the usage of the functions. A ready-to-r
 
     use Acme::Pythonic::Functions;
     
-    # If you use Perl 5, Version 5.10 or higher, please change the 
-    # comment-character in the two following "use"-statements:
-    
-    use Perl6::Say;
-    # use feature 'say';
-    
-    say "Strings:";
+    pront "Strings:";
     
     $a = "Hello";
     
     if (endswith($a, "ello")) {
-        say '$a ends with "ello".';
+        pront '$a ends with "ello".';
     }
     
     if (isin($a, "ll", "s")) {
-        say '"ll" is in $a.';
+        pront '"ll" is in $a.';
     }
     
     $a = "2345";
     
     if (isdigit($a)) {
-        say '$a is a digit.';
+        pront '$a is a digit.';
     }
     
     $a = "    Line    ";
     
-    say lstrip($a);
+    pront lstrip($a);
     $a = replace($a, "Line", "Another line");
-    say $a;
-    say rstrip($a);
+    pront $a;
+    pront rstrip($a);
     
     $a = "Hello";
     
     if (startswith($a, "He")) {
-        say '$a starts with "He".';
+        pront '$a starts with "He".';
     }
     
-    say len($a, "s");
+    pront len($a, "s");
     
-    say;
-    say "Lists:";
+    pront;
+    pront "Lists:";
     
     @a = ("a", "b", "c");
     $b = "d";
     
     @a = append(@a, $b);
     
-    saylist(@a);
+    pront @a;
     
     @a = ("a", "b", "c");
     @b = (1, 2, 3);
     
     @a = extend(@a, @b);
     
-    saylist(@a);
+    pront @a;
     
     if (isin(@a, "c", "l")) {
-        say '"c" is in @a.';
+        pront '"c" is in @a.';
     }
     
     @a = insert(@a, 1, "a2");
     
-    saylist(@a);
+    pront @a;
     
-    say len(@a, "l");
+    pront len(@a, "l");
     
     @a = remove(@a, "a2");
     
-    saylist(@a);
+    pront @a;
     
-    say;
-    say "Hashes:";
+    pront;
+    pront "Hashes:";
     
     %a = ("a" => 1, "b" => 2, "c" => 3);
     
     if (has_key(%a, "c")) {
-        say '%a has a key "c".';
+        pront '%a has a key "c".';
     }
     
     if (isin(%a, "c", "h")) {
-        say '%a has a key "c".';
+        pront '%a has a key "c".';
     }
     
-    say;
-    say "File-related:";
+    pront;
+    pront "File-related:";
     
     if (isdir("/home/user")) {
-        say "Is directory.";
+        pront "Is directory.";
     }
     
     if (isfile("/home/user/myfile")) {
-        say "Is file.";
+        pront "Is file.";
     }
     
     @a = ("a\n", "b\n", "c\n");
     
     if (isfile("test12345.txt")) {
     
-        say 'File "test12345.txt" already exists. Nothing done.';
+        pront 'File "test12345.txt" already exists. Nothing done.';
     } else {
     
         writefile("test12345.txt", @a);
@@ -573,27 +576,30 @@ The following script "example.pl" shows the usage of the functions. A ready-to-r
             $i = rstrip($i);
             print $i . " " ;
         }
-        say;
+        pront;
     }
     
-    say;
-    say "System-related:";
+    pront;
+    pront "System-related:";
     
-    say osname();
+    pront osname();
     
-    sub saylist {
-    
-        for $i (@_) {
-            print $i . " " ;
-        }
-        say;
-    }
-
 In the "examples"-directory mentioned above, there's also a a Pythonic-Perl-version of this script called "perlpyex.pl" and a corresponding Python-script called "pyex.py" for comparison.
 
 =head1 DESCRIPTION
 
 The programming-language "Python" offers some basic string-, list- and other functions, that can be used quite intuatively. Perl often uses regular-expressions or special variables for these tasks. Although Perl's functions are in general more flexible and powerful, they are slightly more difficult to use and a bit harder to read for human beings. This module tries to mimic some of Python's functions in Perl. So maybe Python-programmers switching to Perl or programming-beginners could feel a bit more comfortable with them.
+
+=head2 print-Replacement-Function
+
+=over 12
+
+=item C<pront>
+
+Python adds a (system-dependent) newline-character by default to strings to be printed.
+This is rather convenient and can be found in the say()-function of Perl 5.10 and above too. I wasn't happy with the way, say() prints lists though, because i want one element per line then. You can have that with something like 'say for @a;', but i wrote my own little print-replacement instead. It is called pront(). I think that's a funny name, a bit like chomp(), being derived from chop(). In Python, there isn't a function called pront() though.
+
+=back
 
 =head2 String-Functions
 
@@ -692,7 +698,7 @@ See below.
 
 =back
 
-=head2 Functions for several datatypes:
+=head2 Functions for several datatypes
 
 =over 12
 
@@ -759,7 +765,7 @@ Tells the name of the operating-system, similar to "os.name" in Python.
 
 =head1 AUTHOR, COPYRIGHT & LICENSE
 
-Copyright 2009 Hauke Lubenow, <hlubenow2@gmx.net>, all rights reserved.
+Copyright 2009, 2012 Hauke Lubenow, <hlubenow2@gmx.net>, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

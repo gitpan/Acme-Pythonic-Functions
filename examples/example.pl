@@ -8,105 +8,99 @@ no strict 'vars';
 
 use Acme::Pythonic::Functions;
 
-# If you use Perl 5, Version 5.10 or higher, change the comment-character
-# in the two following "use"-statements:
-
-use Perl6::Say;
-# use feature 'say';
-
-say "Strings:";
+pront "Strings:";
 
 $a = "Hello";
 
 if (endswith($a, "ello")) {
-    say '$a ends with "ello".';
+    pront '$a ends with "ello".';
 }
 
 if (isin($a, "ll", "s")) {
-    say '"ll" is in $a.';
+    pront '"ll" is in $a.';
 }
 
 $a = "2345";
 
 if (isdigit($a)) {
-    say '$a is a digit.';
+    pront '$a is a digit.';
 }
 
 $a = "    Line    ";
 
-say lstrip($a);
+pront lstrip($a);
 $a = replace($a, "Line", "Another line");
-say $a;
-say rstrip($a);
+pront $a;
+pront rstrip($a);
 
 $a = "Hello";
 
 if (startswith($a, "He")) {
-    say '$a starts with "He".';
+    pront '$a starts with "He".';
 }
 
-say len($a, "s");
+pront len($a, "s");
 
-say;
-say "Lists:";
+pront;
+pront "Lists:";
 
 @a = ("a", "b", "c");
 $b = "d";
 
 @a = append(@a, $b);
 
-saylist(@a);
+pront @a;
 
 @a = ("a", "b", "c");
 @b = (1, 2, 3);
 
 @a = extend(@a, @b);
 
-saylist(@a);
+pront @a;
 
 if (isin(@a, "c", "l")) {
-    say '"c" is in @a.';
+    pront '"c" is in @a.';
 }
 
 @a = insert(@a, 1, "a2");
 
-saylist(@a);
+pront @a;
 
-say len(@a, "l");
+pront len(@a, "l");
 
 @a = remove(@a, "a2");
 
-saylist(@a);
+pront @a;
 
-say;
-say "Hashes:";
+pront;
+pront "Hashes:";
 
 %a = ("a" => 1, "b" => 2, "c" => 3);
 
 if (has_key(%a, "c")) {
-    say '%a has a key "c".';
+    pront '%a has a key "c".';
 }
 
 if (isin(%a, "c", "h")) {
-    say '%a has a key "c".';
+    pront '%a has a key "c".';
 }
 
-say;
-say "File-related:";
+pront;
+pront "File-related:";
 
 if (isdir("/home/user")) {
-    say "Is directory.";
+    pront "Is directory.";
 }
 
 if (isfile("/home/user/myfile")) {
-    say "Is file.";
+    pront "Is file.";
 }
 
 @a = ("a\n", "b\n", "c\n");
 
 if (isfile("test12345.txt")) {
 
-    say 'File "test12345.txt" already exists. Nothing done.';
+    pront 'File "test12345.txt" already exists. Nothing done.';
 } else {
 
     writefile("test12345.txt", @a);
@@ -116,20 +110,10 @@ if (isfile("test12345.txt")) {
         $i = rstrip($i);
         print $i . " " ;
     }
-    say;
+    pront;
 }
 
-say;
-say "System-related:";
+pront;
+pront "System-related:";
 
-say osname();
-
-
-sub saylist {
-
-    for $i (@_) {
-        print $i . " " ;
-    }
-    say;
-}
-
+pront osname();
