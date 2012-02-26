@@ -26,7 +26,7 @@ use Exporter;
 our ($VERSION, @ISA, @EXPORT);
 @ISA         = qw(Exporter);
 
-$VERSION     = 0.35;
+$VERSION     = 0.36;
 
 @EXPORT      = qw(append endswith extend has_key insert isdigit isin isdir isfile len lstrip lstrip2 osname pront readfile remove replace rstrip rstrip2 startswith strip writefile);
 
@@ -481,7 +481,7 @@ Acme::Pythonic::Functions - Python-like functions for Perl
 
 =head1 VERSION
 
-Version 0.35
+Version 0.36
 
 =head1 SYNOPSIS
 
