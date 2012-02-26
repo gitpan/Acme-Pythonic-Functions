@@ -6,17 +6,20 @@ use strict;
 
 #######################################################################
 #  Acme::Pythonic::Functions is Copyright (C) 2009-2012, Hauke Lubenow.
+#
 #  This module is free software; you can redistribute it and/or modify it
 #  under the same terms as Perl 5.14.2.
-#  For more details, see the full text of the licenses in the directory LICENSES.
-#  The full text of the licenses can also be found in the documents
-#  'perldoc perlgpl' and 'perldoc perlartistic' of the official Perl 5.14.2-distribution. In case of any contradictions, these 'perldoc'-texts decide.
+#  For more details, see the full text of the licenses in the directory
+#  LICENSES. The full text of the licenses can also be found in the
+#  documents 'perldoc perlgpl' and 'perldoc perlartistic' of the official
+#  Perl 5.14.2-distribution. In case of any contradictions, these
+#  'perldoc'-texts decide.
 #
-#  This program is distributed in the hope that it will be useful, but
-#  without any warranty; without even the implied warranty of
-#  merchantability or fitness for a particular purpose.
-#  For more details, see the full texts of the licenses in the directory
-#  LICENSES and in the 'perldoc'-texts mentioned above.
+#  THIS PROGRAM IS DISTRIBUTED IN THE HOPE THAT IT WILL BE USEFUL, BUT
+#  WITHOUT ANY WARRANTY; WITHOUT EVEN THE IMPLIED WARRANTY OF
+#  MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+#  FOR MORE DETAILS, SEE THE FULL TEXTS OF THE LICENSES IN THE DIRECTORY
+#  LICENSES AND IN THE 'PERLDOC'-TEXTS MENTIONED ABOVE.
 #######################################################################
 
 use Carp;
@@ -26,7 +29,7 @@ use Exporter;
 our ($VERSION, @ISA, @EXPORT);
 @ISA         = qw(Exporter);
 
-$VERSION     = 0.36;
+$VERSION     = 0.37;
 
 @EXPORT      = qw(append endswith extend has_key insert isdigit isin isdir isfile len lstrip lstrip2 osname pront readfile remove replace rstrip rstrip2 startswith strip writefile);
 
@@ -481,7 +484,7 @@ Acme::Pythonic::Functions - Python-like functions for Perl
 
 =head1 VERSION
 
-Version 0.36
+Version 0.37
 
 =head1 SYNOPSIS
 
@@ -788,9 +791,9 @@ Acme::Pythonic::Functions is Copyright (C) 2009-2012, Hauke Lubenow.
 
 This module is free software; you can redistribute it and/or modify it under the same terms as Perl 5.14.2.
 For more details, see the full text of the licenses in the directory LICENSES.
-The full text of the licenses can also be found in the documents 'perldoc perlgpl' and 'perldoc perlartistic' of the official Perl 5.14.2-distribution. In case of any contradictions, these 'perldoc'-texts decide.
+The full text of the licenses can also be found in the documents L<perldoc perlgpl> and L<perldoc perlartistic> of the official Perl 5.14.2-distribution. In case of any contradictions, these 'perldoc'-texts decide.
 
-This program is distributed in the hope that it will be useful, but without any warranty; without even the implied warranty of merchantability or fitness for a particular purpose. For more details, see the full texts of the licenses in the directory LICENSES and in the 'perldoc'-texts mentioned above.
+THIS PROGRAM IS DISTRIBUTED IN THE HOPE THAT IT WILL BE USEFUL, BUT WITHOUT ANY WARRANTY; WITHOUT EVEN THE IMPLIED WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. FOR MORE DETAILS, SEE THE FULL TEXTS OF THE LICENSES IN THE DIRECTORY LICENSES AND IN THE 'PERLDOC'-TEXTS MENTIONED ABOVE.
 
 =head1 SEE ALSO
 

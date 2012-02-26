@@ -70,12 +70,14 @@ perldoc command.
 
     perldoc Acme::Pythonic::Functions
 
+AUTHOR
+       Hauke Lubenow, <hlubenow2@gmx.net>
+
 LICENSE INFORMATION
 
-Copyright (C) 2009, 2012 Hauke Lubenow
+Acme::Pythonic::Functions is Copyright (C) 2009-2012, Hauke Lubenow.
 
-This module is free software; you can redistribute it and/or modify it under the same terms as Perl 5.14.2.
-For more details, see the full text of the licenses at <http://www.perlfoundation.org/artistic_license_2_0> and <http://www.gnu.org/licenses/gpl-2.0.html>.
+This module is free software; you can redistribute it and/or modify it under the same terms as Perl 5.14.2. For more details, see the full text of the licenses in the directory LICENSES.
 The full text of the licenses can also be found in the documents 'perldoc perlgpl' and 'perldoc perlartistic' of the official Perl 5.14.2-distribution. In case of any contradictions, these 'perldoc'-texts decide.
 
-This program is distributed in the hope that it will be useful, but without any warranty; without even the implied warranty of merchantability or fitness for a particular purpose. For more details, see the full texts of the licenses mentioned above.
+THIS PROGRAM IS DISTRIBUTED IN THE HOPE THAT IT WILL BE USEFUL, BUT WITHOUT ANY WARRANTY; WITHOUT EVEN THE IMPLIED WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. FOR MORE DETAILS, SEE THE FULL TEXTS OF THE LICENSES IN THE DIRECTORY "LICENSES" AND IN THE 'PERLDOC'-TEXTS MENTIONED ABOVE.
