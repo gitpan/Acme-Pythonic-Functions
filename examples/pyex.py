@@ -110,7 +110,9 @@ else:
     print
 
 print
-print "System-related:"
+print os.listdir(".")
 
+print
+print "System-related:"
 print os.name
 

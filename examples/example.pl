@@ -114,6 +114,8 @@ if (isfile("test12345.txt")) {
 }
 
 pront;
-pront "System-related:";
+pront oslistdir(".");
 
+pront;
+pront "System-related:";
 pront osname();

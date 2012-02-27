@@ -13,7 +13,7 @@ use strict;
 #  LICENSES. The full text of the licenses can also be found in the
 #  documents 'perldoc perlgpl' and 'perldoc perlartistic' of the official
 #  Perl 5.14.2-distribution. In case of any contradictions, these
-#  'perldoc'-texts decide.
+#  'perldoc'-texts are decisive.
 #
 #  THIS PROGRAM IS DISTRIBUTED IN THE HOPE THAT IT WILL BE USEFUL, BUT
 #  WITHOUT ANY WARRANTY; WITHOUT EVEN THE IMPLIED WARRANTY OF
@@ -29,9 +29,9 @@ use Exporter;
 our ($VERSION, @ISA, @EXPORT);
 @ISA         = qw(Exporter);
 
-$VERSION     = 0.37;
+$VERSION     = 0.38;
 
-@EXPORT      = qw(append endswith extend has_key insert isdigit isin isdir isfile len lstrip lstrip2 osname pront readfile remove replace rstrip rstrip2 startswith strip writefile);
+@EXPORT      = qw(append endswith extend has_key insert isdigit isin isdir isfile len listdir lstrip lstrip2 oslistdir osname pront readfile remove replace rstrip rstrip2 startswith strip writefile);
 
 # Internal Functions
 
@@ -464,6 +464,30 @@ sub writefile {
     close(FH);
 }
 
+sub listdir {
+
+    &checkArgs(1, @_);
+
+    my $dir = shift;
+    if (! -d $dir) {
+        croak "Error: No such directory: '$dir',";
+    }
+    my $filename;
+    my @files = ();
+    opendir (DIR, $dir) || croak "Error opening directory '$dir',";
+    while(($filename = readdir(DIR))){
+        if ($filename ne "." && $filename ne "..") {
+            push(@files, "$filename");
+        }
+    }
+    return @files;
+}
+
+sub oslistdir {
+    return listdir(@_);
+}
+
+
 # System-related-Functions
 
 sub osname {
@@ -484,7 +508,7 @@ Acme::Pythonic::Functions - Python-like functions for Perl
 
 =head1 VERSION
 
-Version 0.37
+Version 0.38
 
 =head1 SYNOPSIS
 
@@ -596,10 +620,10 @@ The following script "example.pl" shows the usage of the functions. A ready-to-r
         }
         pront;
     }
-    
+
+    pront oslistdir(".");
     pront;
     pront "System-related:";
-    
     pront osname();
     
 In the "examples"-directory mentioned above, there's also a a Pythonic-Perl-version of this script called "perlpyex.pl" and a corresponding Python-script called "pyex.py" for comparison.
@@ -761,6 +785,10 @@ Tests whether $foo is a directory. Python: C<os.path.isdir()>, Perl: C<-d>.
 
 Tests whether $foo is a plain file. Python: C<os.path.isfile()>, Perl: C<-f>. For more detailed file-testing use the other file-testing-operators described in "perldoc perlfunc", the stat()-function or the "File::stat"-module.
 
+=item C<listdir($foo)>, C<oslistdir($foo)>
+
+Returns a list of the filenames in the directory $foo. Directory-entries "." and ".." are left out. Python: C<os.listdir()>.
+
 =item C<readfile($foo)> 
 
 Returns the contents of the text-file named $foo as a list. Only use on smaller files, as this can take a lot of memory. For processing larger files, use the "Tie::File"-module instead. C<readfile()> is not a Python-builtin, although Python has a function C<readlines()> to read multiple lines of text from a file-handle into a list at once.
@@ -791,7 +819,7 @@ Acme::Pythonic::Functions is Copyright (C) 2009-2012, Hauke Lubenow.
 
 This module is free software; you can redistribute it and/or modify it under the same terms as Perl 5.14.2.
 For more details, see the full text of the licenses in the directory LICENSES.
-The full text of the licenses can also be found in the documents L<perldoc perlgpl> and L<perldoc perlartistic> of the official Perl 5.14.2-distribution. In case of any contradictions, these 'perldoc'-texts decide.
+The full text of the licenses can also be found in the documents L<perldoc perlgpl> and L<perldoc perlartistic> of the official Perl 5.14.2-distribution. In case of any contradictions, these 'perldoc'-texts are decisive.
 
 THIS PROGRAM IS DISTRIBUTED IN THE HOPE THAT IT WILL BE USEFUL, BUT WITHOUT ANY WARRANTY; WITHOUT EVEN THE IMPLIED WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. FOR MORE DETAILS, SEE THE FULL TEXTS OF THE LICENSES IN THE DIRECTORY LICENSES AND IN THE 'PERLDOC'-TEXTS MENTIONED ABOVE.
 

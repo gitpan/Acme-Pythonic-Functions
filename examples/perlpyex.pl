@@ -106,7 +106,8 @@ else:
     pront
 
 pront
+pront oslistdir(".")
+
+pront
 pront "System-related:"
-
 pront osname()
-
